@@ -1,0 +1,54 @@
+<!--Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start-Stop Counter</title>
+</head>
+<body>
+
+    <h1>Counter: <span id="counterValue">0</span></h1>
+    
+    <!-- Buttons to Start and Stop the Counter -->
+    <button onclick="startCounter()">Start</button>
+    <button onclick="stopCounter()">Stop</button>
+    <button onclick="clearcounter()">Clear</button>
+
+    <script>
+        // Variable to store the counter value
+        let counterValue = 0;
+
+        // Variable to store the interval ID for stopping the counter
+        let intervalId;
+
+        // Function to start the counter
+        function startCounter() {
+            // Clear any existing interval to prevent multiple intervals running simultaneously
+            clearInterval(intervalId);
+
+            // Start the counter by setting up an interval
+            intervalId = setInterval(function() {
+                counterValue++;
+                updateCounterDisplay();
+            }, 1000); // Adjust the interval duration (in milliseconds) which is 1sec
+        }
+
+        // Function to stop the counter
+        function stopCounter() {
+            clearInterval(intervalId);
+        }
+
+        // Function to update the counter display in the HTML
+        function updateCounterDisplay() {
+            document.getElementById('counterValue').innerText = counterValue;
+        }
+        function clearcounter() {
+            counterValue=0;
+            updateCounterDisplay();
+        }
+
+    </script>
+
+</body>
+</html>
